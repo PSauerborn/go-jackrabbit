@@ -29,7 +29,7 @@ func ConnectAndDeliverOverExchange(config RabbitConnectionConfig, payload []byte
 	}
 
 	// declare events exchange with fanout type
-	err = conn.Channel.ExchangeDeclare(config.ExchangeName, config.ExchangeType, false, true, false, false, nil)
+	err = conn.Channel.ExchangeDeclare(config.ExchangeName, config.ExchangeType, false, false, false, false, nil)
 	if err != nil {
 		log.Error(fmt.Errorf("unable to create rabbitmq exchange: %s", err))
 		return err
@@ -63,7 +63,7 @@ func ConnectAndDeliverOverDurableExchange(config RabbitConnectionConfig, payload
 	}
 
 	// declare events exchange with fanout type
-	err = conn.Channel.ExchangeDeclare(config.ExchangeName, config.ExchangeType, true, true, false, false, nil)
+	err = conn.Channel.ExchangeDeclare(config.ExchangeName, config.ExchangeType, true, false, false, false, nil)
 	if err != nil {
 		log.Error(fmt.Errorf("unable to create rabbitmq exchange: %s", err))
 		return err

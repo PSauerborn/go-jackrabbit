@@ -45,7 +45,6 @@ func NewRabbitConnection(config RabbitConnectionConfig) (*RabbitMQConnection, er
 		log.Error(fmt.Errorf("unable to connect to rabbitmq server: %s", err))
 		return &RabbitMQConnection{}, err
 	}
-
 	// create new rabbitMQ channel
 	channel, err := conn.Channel()
 	if err != nil {
@@ -56,4 +55,3 @@ func NewRabbitConnection(config RabbitConnectionConfig) (*RabbitMQConnection, er
 	}
 	return &RabbitMQConnection{conn, channel}, nil
 }
-
